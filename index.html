@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Luxury Experience - Premium Lifestyle</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 3px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a1a0a 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 90px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: 28px;
+    color: #ccc;
+    margin-bottom: 50px;
+    animation: fadeInUp 1.2s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 20px 60px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+}
+
+.features-page {
+    padding: 120px 50px;
+    background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-title {
+    font-size: 64px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    font-size: 20px;
+    color: #999;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto 80px;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.7));
+    padding: 60px 40px;
+    border-radius: 25px;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+.feature-card:hover::before {
+    left: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(255, 215, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+.feature-icon {
+    font-size: 70px;
+    margin-bottom: 30px;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+    color: #FFD700;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.feature-card h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #FFD700;
+}
+
+.feature-card p {
+    font-size: 17px;
+    color: #bbb;
+    line-height: 1.8;
+}
+
+.gallery-page {
+    padding: 120px 50px;
+    background: #000;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    height: 500px;
+    border-radius: 25px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    border: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 165, 0, 0.3));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 30px 60px rgba(255, 215, 0, 0.4);
+    border-color: #FFD700;
+}
+
+.gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a, #1a1a1a);
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    gap: 20px;
+    color: #FFD700;
+    font-weight: 600;
+}
+
+@keyframes gradientMove {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.pricing-page {
+    padding: 120px 50px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #000 50%, #0a0a0a 100%);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.7));
+    padding: 70px 45px;
+    border-radius: 30px;
+    text-align: center;
+    transition: all 0.5s ease;
+    border: 2px solid rgba(255, 215, 0, 0.15);
+    position: relative;
+}
+
+.pricing-card.featured {
+    border: 3px solid #FFD700;
+    transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(26, 26, 26, 0.8));
+}
+
+.pricing-card.featured::after {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    padding: 8px 25px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.pricing-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 40px 80px rgba(255, 215, 0, 0.4);
+    border-color: #FFD700;
+}
+
+.pricing-title {
+    font-size: 36px;
+    color: #FFD700;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.pricing-price {
+    font-size: 64px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.pricing-period {
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 40px;
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.pricing-features li {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    color: #ccc;
+    font-size: 17px;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.about-page {
+    padding: 120px 50px;
+    background: linear-gradient(180deg, #000 0%, #1a1a1a 50%, #000 100%);
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-text {
+    font-size: 20px;
+    line-height: 2;
+    color: #ccc;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 60px;
+    margin: 80px 0;
+    text-align: center;
+}
+
+.stat-item {
+    position: relative;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(40, 40, 40, 0.6));
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+    border-color: #FFD700;
+}
+
+.stat-number {
+    font-size: 72px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-size: 18px;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 80px;
+}
+
+.team-card {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.7));
+    padding: 50px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+    border-color: #FFD700;
+}
+
+.team-avatar {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #000;
+    font-weight: 700;
+}
+
+.team-name {
+    font-size: 26px;
+    color: #FFD700;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.team-role {
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.team-desc {
+    font-size: 15px;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+.contact-page {
+    padding: 120px 50px;
+    background: #000;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.contact-info-item {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.7));
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.contact-info-item:hover {
+    transform: translateX(10px);
+    border-color: #FFD700;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+.contact-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #FFD700;
+}
+
+.contact-info-title {
+    font-size: 24px;
+    color: #FFD700;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.contact-info-text {
+    font-size: 18px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.7));
+    padding: 60px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 12px;
+    color: #FFD700;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 18px 25px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 180px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+}
+
+.testimonials-page {
+    padding: 120px 50px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #000 50%, #0a0a0a 100%);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.7));
+    padding: 60px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 100px;
+    color: rgba(255, 215, 0, 0.2);
+    font-family: Georgia, serif;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(255, 215, 0, 0.3);
+    border-color: #FFD700;
+}
+
+.testimonial-text {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #fff;
+    margin-bottom: 35px;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.author-avatar {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #000;
+    font-weight: 700;
+}
+
+.author-info {
+    flex: 1;
+}
+
+.author-name {
+    font-size: 20px;
+    color: #FFD700;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.author-role {
+    font-size: 15px;
+    color: #999;
+}
+
+.rating {
+    color: #FFD700;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.footer {
+    background: #000;
+    padding: 80px 50px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #999;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.footer-links a:hover {
+    color: #FFD700;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.social-links span {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFD700;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.social-links span:hover {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+}
+
+.footer-text {
+    color: #666;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+}
+
+@media (max-width: 968px) {
+    .hero h1 {
+        font-size: 52px;
+    }
+
+    .hero p {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 42px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+}
+
+/* ---------------------------- */
+/*     MOBILE RESPONSIVE        */
+/* ---------------------------- */
+
+@media (max-width: 900px) {
+    .nav {
+        padding: 15px 25px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+
+    .hero p {
+        font-size: 22px;
+    }
+
+    .cta-button {
+        padding: 15px 40px;
+        font-size: 16px;
+    }
+
+    .features-page,
+    .gallery-page,
+    .pricing-page,
+    .about-page,
+    .contact-page {
+        padding: 80px 25px;
+    }
+
+    .section-title {
+        font-size: 48px;
+    }
+
+    .section-subtitle {
+        font-size: 18px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 700px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .feature-card {
+        padding: 35px 25px;
+        border-radius: 28px;
+    }
+
+    .feature-icon {
+        font-size: 48px;
+        margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .feature-card p {
+        font-size: 16px;
+        line-height: 1.45;
+    }
+
+    .cta-button,
+    .pricing-button,
+    .contact-button {
+        padding: 14px 28px;
+        font-size: 16px;
+        margin-top: 12px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .pricing-button:hover,
+    .cta-button:hover {
+        transform: scale(1.03);
+    }
+
+    .pricing-card {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav {
+        padding: 12px 20px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .nav-links {
+        display: none;
+        /* приховати меню, якщо треба — можу зробити бургер */
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 15px;
+    }
+
+    .feature-card {
+        padding: 40px 25px;
+    }
+
+    .feature-card h3 {
+        font-size: 26px;
+    }
+
+    .feature-icon {
+        font-size: 55px;
+    }
+
+    .gallery-item {
+        height: 320px;
+    }
+
+    .pricing-card {
+        padding: 50px 30px;
+    }
+
+    .pricing-title {
+        font-size: 30px;
+    }
+
+    .pricing-price {
+        font-size: 48px;
+    }
+
+    .about-text {
+        font-size: 17px;
+    }
+
+    .stat-number {
+        font-size: 50px;
+    }
+
+    .contact-form {
+        padding: 40px 25px;
+    }
+}
+
+@media (max-width: 500px) {
+    .testimonials-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .precision,
+    .exclusive {
+        font-size: 40px;
+    }
+
+    .section-title {
+        font-size: 35px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo" onclick="navigateTo('home')">LUXURY</div>
+        <div class="nav-links">
+            <a onclick="navigateTo('home')">Home</a>
+            <a onclick="navigateTo('features')">Features</a>
+            <a onclick="navigateTo('gallery')">Gallery</a>
+            <a onclick="navigateTo('about')">About</a>
+            <a onclick="navigateTo('pricing')">Pricing</a>
+            <a onclick="navigateTo('testimonials')">Testimonials</a>
+            <a onclick="navigateTo('contact')">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1>Luxury & Innovation</h1>
+                <p>Where elegance meets performance in perfect harmony</p>
+                <button class="cta-button" onclick="navigateTo('features')">Discover More</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- FEATURES PAGE -->
+    <div id="features" class="page features-page">
+        <div class="section-header">
+            <h2 class="section-title">Our Features</h2>
+            <p class="section-subtitle">Experience unparalleled quality and innovation in every detail</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">SPEED</div>
+                <h3>Lightning Fast</h3>
+                <p>Unmatched performance combining the power of a supercar with the intelligence of cutting-edge mobile
+                    technology. Every operation executed in a fraction of a second.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">DESIGN</div>
+                <h3>Premium Design</h3>
+                <p>Sophisticated design inspired by Italian sports car lines and minimalist elegance. Every element
+                    crafted with attention to detail.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">SECURE</div>
+                <h3>Maximum Security</h3>
+                <p>Advanced data protection systems with military-grade encryption technology. Your data is fully
+                    protected 24/7.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon precision">PRECISION</div>
+                <h3>Precision Engineering</h3>
+                <p>Every detail refined with surgical precision for the highest quality of use. Perfection in every
+                    square centimeter.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">TECH</div>
+                <h3>Futuristic Technology</h3>
+                <p>Innovations ahead of their time, combining AI with intuitive interface. The future available today.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon exclusive">EXCLUSIVE</div>
+                <h3>Exclusivity</h3>
+                <p>Limited edition for demanding clients who value uniqueness and prestige. Own something truly special.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="gallery" class="page gallery-page">
+        <div class="section-header">
+            <h2 class="section-title">Exclusive Gallery</h2>
+            <p class="section-subtitle">Explore our collection of premium designs and innovations</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <div>PREMIUM TECH</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <div>ENGINEERING</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <div>INNOVATION</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <div>DESIGN STUDIO</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <div>EXCLUSIVE EDITION</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page about-page">
+        <div class="section-header">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-subtitle">Pioneering the future of luxury technology</p>
+        </div>
+        <div class="about-content">
+            <p class="about-text">
+                We are the intersection of automotive excellence and technological innovation. Born from a vision to
+                merge the precision of Italian supercar engineering with the elegance of premium mobile technology, we
+                create experiences that transcend ordinary expectations. Every product we craft represents the pinnacle
+                of design, performance, and luxury.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">350</div>
+                    <div class="stat-label">km/h Max Speed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">JD</div>
+                    <h3 class="team-name">John Davis</h3>
+                    <p class="team-role">CEO & Founder</p>
+                    <p class="team-desc">Visionary leader with 20 years in luxury automotive and tech industries.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">SR</div>
+                    <h3 class="team-name">Sarah Roberts</h3>
+                    <p class="team-role">Chief Designer</p>
+                    <p class="team-desc">Award-winning designer specializing in premium product aesthetics.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">MC</div>
+                    <h3 class="team-name">Michael Chen</h3>
+                    <p class="team-role">CTO</p>
+                    <p class="team-desc">Technology pioneer driving innovation in AI and mobile systems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRICING PAGE -->
+    <div id="pricing" class="page pricing-page">
+        <div class="section-header">
+            <h2 class="section-title">Choose Your Package</h2>
+            <p class="section-subtitle">Select the perfect luxury experience tailored for you</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="pricing-title">Essential</h3>
+                <div class="pricing-price">$49,999</div>
+                <p class="pricing-period">One-time payment</p>
+                <ul class="pricing-features">
+                    <li>Basic feature package</li>
+                    <li>24/7 technical support</li>
+                    <li>2-year warranty</li>
+                    <li>Free updates</li>
+                    <li>App access</li>
+                    <li>Premium materials</li>
+                </ul>
+                <button class="cta-button" onclick="navigateTo('contact')">Order Now</button>
+            </div>
+            <div class="pricing-card featured">
+                <h3 class="pricing-title">Premium</h3>
+                <div class="pricing-price">$99,999</div>
+                <p class="pricing-period">One-time payment</p>
+                <ul class="pricing-features">
+                    <li>Everything in Essential</li>
+                    <li>Advanced AI features</li>
+                    <li>5-year warranty</li>
+                    <li>Priority support</li>
+                    <li>Premium customization</li>
+                    <li>Exclusive accessories</li>
+                    <li>VIP events access</li>
+                </ul>
+                <button class="cta-button" onclick="navigateTo('contact')">Order Now</button>
+            </div>
+            <div class="pricing-card">
+                <h3 class="pricing-title">Ultimate</h3>
+                <div class="pricing-price">$199,999</div>
+                <p class="pricing-period">One-time payment</p>
+                <ul class="pricing-features">
+                    <li>Everything in Premium</li>
+                    <li>Limited edition</li>
+                    <li>Lifetime warranty</li>
+                    <li>Dedicated consultant</li>
+                    <li>VIP event access</li>
+                    <li>Custom modifications</li>
+                    <li>Concierge service</li>
+                    <li>White-glove delivery</li>
+                </ul>
+                <button class="cta-button" onclick="navigateTo('contact')">Order Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS PAGE -->
+    <div id="testimonials" class="page testimonials-page">
+        <div class="section-header">
+            <h2 class="section-title">Client Testimonials</h2>
+            <p class="section-subtitle">Hear what our clients say about their luxury experience</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">This combination is absolutely revolutionary. I've never experienced such a
+                    level of luxury and functionality in one product. It's transformed how I work and live.</p>
+                <div class="testimonial-author row">
+                    <div class="author-avatar col-6 col-sm-12">JK</div>
+                    <div class="author-info col-6 col-sm-12">
+                        <div class="author-name">James Kingston</div>
+                        <div class="author-role">CEO, Tech Innovations</div>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">The attention to detail is extraordinary. Every aspect feels premium, from
+                    the materials to the performance. This is what true luxury looks like in the modern age.</p>
+                <div class="testimonial-author row">
+                    <div class="author-avatar col-6 col-sm-12">EP</div>
+                    <div class="author-info col-6 col-sm-12">
+                        <div class="author-name">Emma Patterson</div>
+                        <div class="author-role">Designer, Creative Studio</div>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">I've owned many luxury products, but this stands in a category of its own.
+                    The fusion of speed, elegance, and innovation is simply unmatched.</p>
+                <div class="testimonial-author row">
+                    <div class="author-avatar col-6 col-sm-12">DR</div>
+                    <div class="author-info col-6 col-sm-12">
+                        <div class="author-name">David Richardson</div>
+                        <div class="author-role">Entrepreneur</div>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">The customer service is impeccable. They treated me like royalty from day
+                    one. The product itself exceeds all expectations in every way.</p>
+                <div class="testimonial-author row">
+                    <div class="author-avatar col-6 col-sm-12">SA</div>
+                    <div class="author-info col-6 col-sm-12">
+                        <div class="author-name">Sophia Anderson</div>
+                        <div class="author-role">Executive Producer</div>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page contact-page">
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to experience luxury? Contact us today</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <div class="contact-icon">LOCATION</div>
+                    <h3 class="contact-info-title">Visit Us</h3>
+                    <p class="contact-info-text">123 Luxury Avenue<br>Premium District<br>New York, NY 10001</p>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-icon">PHONE</div>
+                    <h3 class="contact-info-title">Call Us</h3>
+                    <p class="contact-info-text">+1 (555) 123-4567<br>Available 24/7</p>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-icon">EMAIL</div>
+                    <h3 class="contact-info-title">Email Us</h3>
+                    <p class="contact-info-text">contact@luxury.com<br>support@luxury.com</p>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a onclick="navigateTo('home')">Home</a>
+                <a onclick="navigateTo('features')">Features</a>
+                <a onclick="navigateTo('gallery')">Gallery</a>
+                <a onclick="navigateTo('about')">About</a>
+                <a onclick="navigateTo('pricing')">Pricing</a>
+                <a onclick="navigateTo('testimonials')">Testimonials</a>
+                <a onclick="navigateTo('contact')">Contact</a>
+            </div>
+            <div class="social-links row">
+                <span class="col-6 col-sm-6">FB</span>
+                <span class="col-6 col-sm-6">IG</span>
+                <span class="col-6 col-sm-6">TW</span>
+                <span class="col-6 col-sm-6">LI</span>
+            </div>
+            <p class="footer-text">© 2024 Luxury Experience. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="scroll-top" id="scrollTop">↑</div>
+
+    <script>
+        function navigateTo(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you shortly.');
+            contactForm.reset();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
